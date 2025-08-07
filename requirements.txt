@@ -22,3 +22,4 @@ psycopg2-binary==2.9.10
 SQLAlchemy==2.0.41
 SQLAlchemy-serializer==1.4.12
 SqlalchemyMixin==0.0.39
+python-dotenv
