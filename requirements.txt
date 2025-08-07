@@ -1,3 +1,4 @@
+pip>=23.0.1
 setuptools>=42
 wheel
 aiohappyeyeballs==2.4.4
