@@ -1,7 +1,7 @@
 import bcrypt
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy_serializer import SerializerMixin
-from sqlalchemy_mixins import AllFeaturesMixin
+# from sqlalchemy_mixins import AllFeaturesMixin
 
 db = SQLAlchemy()
 
