@@ -12,7 +12,7 @@ class TaskResource(Resource):
         completed=data.get('completed', False)
         # user_id=data.get('user_id')
 
-        current_user_id = get_jwt_identity()
+        current_user_id = int(get_jwt_identity())
 
         if not title:
             return {"message": "Title are required."}, 400
@@ -42,7 +42,7 @@ class TaskResource(Resource):
         if not task:
             return {'message': f'Task with id {task_id} not found'}, 404
         
-        current_user_id = get_jwt_identity()
+        current_user_id = int(get_jwt_identity())
         if task.user_id != current_user_id:
             return {'message': 'Access denied'}, 403
         
@@ -64,7 +64,7 @@ class TaskResource(Resource):
         if not task:
             return {'message': f'Task with id {task_id} not found.'}, 404
         
-        current_user_id = get_jwt_identity()
+        current_user_id = int(get_jwt_identity())
         if task.user_id != current_user_id:
             return {'message': 'Access denied'}, 403
         
@@ -75,7 +75,7 @@ class TaskResource(Resource):
 class UserTasksResource(Resource):
     @jwt_required()
     def get(self, user_id):
-        current_user_id = get_jwt_identity()
+        current_user_id = int(get_jwt_identity())
         if current_user_id != int(user_id):
             return {'message': 'Access denied'}, 400
         user = User.query.get_or_404(user_id)
