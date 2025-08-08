@@ -16,7 +16,10 @@ from resources.logout import LogoutResource
 from blocklist import BLOCKLIST
 
 app = Flask(__name__)
-CORS(app, origins=['http://localhost:3000'], supports_credentials=True)
+CORS(app, origins=[
+    'http://localhost:3000',  # local dev frontend URL
+    'https://task-manager-frontend-5er9.vercel.app',  # your deployed frontend URL here
+], supports_credentials=True)
 app.config.from_object(Config)
 
 # Add a secret key for JWT (set this in your Config)
