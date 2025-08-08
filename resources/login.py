@@ -1,4 +1,4 @@
-from flask_restful import Resource, reqparse
+from flask_restful import Resource
 from flask import request
 from flask_jwt_extended import create_access_token
 from models import db, User
@@ -16,7 +16,7 @@ class LoginResource(Resource):
         user = User.query.filter_by(username=username).first()
 
         if user and user.check_password(password):
-            access_token = create_access_token(identity=user.id)
+            access_token = create_access_token(identity=str(user.id))
             return {
                 'message': 'Login successful',
                 'access_token': access_token,
